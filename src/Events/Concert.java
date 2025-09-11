@@ -60,6 +60,6 @@ public class Concert extends Occurrence{
     // .toString() override
     @Override
     public String toString() {
-        return this.DateTimeFormatter() + " - " + this.title + this.PrizeFormatter();
+        return this.DateTimeFormatter() + " - " + this.title + " " + this.PrizeFormatter();
     }
 }

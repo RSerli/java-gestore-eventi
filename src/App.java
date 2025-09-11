@@ -1,10 +1,12 @@
 
+import Events.Concert;
 import Events.Occurrence;
 import Exceptions.BookingSeatsError;
 import Exceptions.DateWrong;
 import Exceptions.NameEventError;
 import Exceptions.WrongTotalSeats;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class App {
@@ -84,11 +86,45 @@ public class App {
             System.out.println("Error in the date inserted by the user: "+ e.getMessage());
         }catch(WrongTotalSeats e){
             System.out.println("Error in the number of total seats inserted by the user: "+ e.getMessage());
+        }
+
+       //---------------------------------------------------------------------------------------------------
+
+        System.out.println("\n    CONCERT INPUT");
+        try {
+            //User input Occcurence
+            System.out.print("Insert the name of the concert: ");
+            String userInputConcertName = scan.nextLine();
+            System.out.print("Insert the year of the concert: ");
+            Integer userInputYearConcert = scan.nextInt();
+            System.out.print("Insert the month of the concert: ");
+            Integer userInputMonthConcert = scan.nextInt();
+            System.out.print("Insert the day of the month of the concert: ");
+            Integer userInputDayConcert = scan.nextInt();
+            System.out.print("Insert the begin hour of the concert: ");
+            Integer userInputBeginHourOfConcert = scan.nextInt();
+            System.out.print("Insert the begin minutes of the concert: ");
+            Integer userInputBeginMinutsOfConcert = scan.nextInt();
+            System.out.print("Insert the price of the ticket: ");
+            Double userInputConcrtPriceTicket = scan.nextDouble();
+            System.out.print("Insert the total seats of the concerrt: ");
+            Integer userInputTotalSeatsConcert = scan.nextInt();
+    
+            //allocate new occurrence given by the user
+            Occurrence Conc1 = new Concert(userInputConcertName, LocalDate.of(userInputYearConcert, userInputMonthConcert, userInputDayConcert), userInputTotalSeatsConcert, userInputConcrtPriceTicket, LocalTime.of(userInputBeginHourOfConcert, userInputBeginMinutsOfConcert));
+            
+            //To String OverRide
+            System.out.println("\n" + Conc1.toString());
+
+        }catch(NameEventError e){
+            System.out.println("Error in the name inserted by the user: "+ e.getMessage());
+        }catch(DateWrong e){
+            System.out.println("Error in the date inserted by the user: "+ e.getMessage());
+        }catch(WrongTotalSeats e){
+            System.out.println("Error in the number of total seats inserted by the user: "+ e.getMessage());
         }finally{
             scan.close();
         }
-
-       
-    
+        
     }
 }
