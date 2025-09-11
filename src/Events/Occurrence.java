@@ -8,8 +8,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Occurrence{
-    private String title;
-    private LocalDate date;
+    protected String title;
+    protected LocalDate date;
     private final int totalSeats;
     private int bookedSeats;
 
@@ -121,8 +121,8 @@ public class Occurrence{
     // .toString() override
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return date.format(formatter) + " - " + title;
+        DateTimeFormatter formatterTemplate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return date.format(formatterTemplate) + " - " + title;
     }
 
 }
